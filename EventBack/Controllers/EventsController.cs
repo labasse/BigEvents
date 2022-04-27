@@ -21,6 +21,7 @@ namespace EventBack.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(typeof(EventDto), StatusCodes.Status201Created)]
         public IActionResult CreateEvent([FromBody] EventDto newEvent)
         {
             try
@@ -36,6 +37,8 @@ namespace EventBack.Controllers
             }
         }
         [HttpPut("{id:guid}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult UpdateEvent(Guid id, [FromBody] EventDto updatedEvent)
         {
             var entity = _events.AllEvents.FirstOrDefault(e => e.Id == id);
