@@ -6,18 +6,25 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using Xamarin.Forms;
 
 namespace EventMobileBasic
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage : ContentPage, INotifyPropertyChanged
     {
-        private ObservableCollection<EventEntry> events = new ObservableCollection<EventEntry>();
+        private readonly ObservableCollection<EventEntry> events = new ObservableCollection<EventEntry>();
+        private string erreur = "";
+        private Timer alertTimer = new Timer(2000);
 
         public MainPage()
         {
             BindingContext = this;
             InitializeComponent();
+            alertTimer.Elapsed +=(s, e) => {
+                Erreur = "";
+                alertTimer.Stop();
+            };
         }
         public ObservableCollection<EventEntry> Events => events;
         protected override async void OnAppearing()
@@ -42,7 +49,7 @@ namespace EventMobileBasic
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-
+            
         }
 
         private async void SwipeItem_Clicked(object sender, EventArgs e)
@@ -56,8 +63,20 @@ namespace EventMobileBasic
             }
             catch(ApiException ex)
             {
+                Erreur = ex.Message;
                 events.Add(entry);
             }
         }
+        public string Erreur
+        {
+            get => erreur;
+            set
+            {
+                erreur = value;
+                alertTimer.Start();
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Erreur)));
+            }
+        }
+        public new event PropertyChangedEventHandler PropertyChanged;
     }
 }

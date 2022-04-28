@@ -5,7 +5,6 @@
 
     <AbsoluteLayout>
         <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
-            
             <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
                 <Label Text="Evènements" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
             </Frame>
@@ -32,8 +31,7 @@
                                         <Label.FormattedText >
                                             <FormattedString>
                                                 <Span FontSize="Title" Text="{Binding Event.Title}"/>
-                                                <Span Text=" - "/>
-                                                <Span FontSize="Subtitle" Text="{Binding Event.Start, StringFormat='{0:dd/MM/yyyy}'}"/>
+                                                <Span FontSize="Subtitle" Text="{Binding Event.Start, StringFormat=' - {0:dd/MM/yyyy}'}"/>
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
@@ -48,5 +46,8 @@
         <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Opacity="0.5" BackgroundColor="DarkGray" x:Name="pleaseWait" >
             <ActivityIndicator IsRunning="True" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
         </StackLayout>
+        <Frame Margin="20,5" Padding="20,2" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" BackgroundColor="LightPink" x:Name="alert" Style="{x:StaticResource Erreur}">
+            <Label Text="{Binding Erreur}" FontSize="Title" TextColor="Black" HorizontalOptions="CenterAndExpand"/>
+        </Frame>
     </AbsoluteLayout>
 </ContentPage>

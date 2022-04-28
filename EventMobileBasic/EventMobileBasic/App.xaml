@@ -3,6 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EventMobileBasic.App">
     <Application.Resources>
-
+        <Style TargetType="Frame" x:Key="Erreur">
+            <Style.Triggers>
+                <DataTrigger TargetType="Frame" Binding="{Binding Erreur}" Value="">
+                    <Setter Property="IsVisible" Value="false"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
     </Application.Resources>
 </Application>
