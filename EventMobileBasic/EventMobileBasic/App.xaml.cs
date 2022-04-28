@@ -21,7 +21,11 @@ namespace EventMobileBasic
         {
             InitializeComponent();
             DependencyService.RegisterSingleton(
+#if DEBUG
                 new EventApiService("https://10.0.2.2:7057", http)
+#else
+                new EventApiService("https://myevents-api.example.com", http)
+#endif
             );
             MainPage = new MainPage();
         }
