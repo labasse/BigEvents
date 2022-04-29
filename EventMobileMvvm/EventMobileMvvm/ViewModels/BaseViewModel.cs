@@ -1,5 +1,4 @@
-﻿using EventMobileMvvm.Models;
-using EventMobileMvvm.Services;
+﻿using EventMobileMvvm.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +9,7 @@ namespace EventMobileMvvm.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public IDataStore<EventDto> DataStore => DependencyService.Get<IDataStore<EventDto>>();
 
         bool isBusy = false;
         public bool IsBusy

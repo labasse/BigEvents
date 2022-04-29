@@ -1,4 +1,4 @@
-﻿using EventMobileMvvm.Models;
+﻿using EventMobileMvvm.Services;
 using EventMobileMvvm.Views;
 using System;
 using System.Collections.ObjectModel;
@@ -10,20 +10,20 @@ namespace EventMobileMvvm.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
-        private Item _selectedItem;
+        private EventDto _selectedItem;
 
-        public ObservableCollection<Item> Items { get; }
+        public ObservableCollection<EventDto> Items { get; }
         public Command LoadItemsCommand { get; }
         public Command AddItemCommand { get; }
-        public Command<Item> ItemTapped { get; }
+        public Command<EventDto> ItemTapped { get; }
 
         public ItemsViewModel()
         {
             Title = "Browse";
-            Items = new ObservableCollection<Item>();
+            Items = new ObservableCollection<EventDto>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            ItemTapped = new Command<Item>(OnItemSelected);
+            ItemTapped = new Command<EventDto>(OnItemSelected);
 
             AddItemCommand = new Command(OnAddItem);
         }
@@ -57,7 +57,7 @@ namespace EventMobileMvvm.ViewModels
             SelectedItem = null;
         }
 
-        public Item SelectedItem
+        public EventDto SelectedItem
         {
             get => _selectedItem;
             set
@@ -72,7 +72,7 @@ namespace EventMobileMvvm.ViewModels
             await Shell.Current.GoToAsync(nameof(NewItemPage));
         }
 
-        async void OnItemSelected(Item item)
+        async void OnItemSelected(EventDto item)
         {
             if (item == null)
                 return;

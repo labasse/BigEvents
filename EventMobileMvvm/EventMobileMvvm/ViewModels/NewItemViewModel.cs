@@ -1,4 +1,4 @@
-﻿using EventMobileMvvm.Models;
+﻿using EventMobileMvvm.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -49,13 +49,13 @@ namespace EventMobileMvvm.ViewModels
 
         private async void OnSave()
         {
-            Item newItem = new Item()
+            EventDto newItem = new EventDto()
             {
-                Id = Guid.NewGuid().ToString(),
-                Text = Text,
+                Title = Text,
                 Description = Description
             };
 
+            //TODO : Get id
             await DataStore.AddItemAsync(newItem);
 
             // This will pop the current page off the navigation stack

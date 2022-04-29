@@ -1,5 +1,4 @@
-﻿using EventMobileMvvm.Models;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -44,8 +43,8 @@ namespace EventMobileMvvm.ViewModels
             try
             {
                 var item = await DataStore.GetItemAsync(itemId);
-                Id = item.Id;
-                Text = item.Text;
+                Id = item.Id?.ToString();
+                Text = item.Title;
                 Description = item.Description;
             }
             catch (Exception)

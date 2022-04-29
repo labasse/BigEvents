@@ -1,4 +1,4 @@
-﻿using EventMobileMvvm.Models;
+﻿using EventMobileMvvm.Services;
 using EventMobileMvvm.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ namespace EventMobileMvvm.Views
 {
     public partial class NewItemPage : ContentPage
     {
-        public Item Item { get; set; }
+        public EventDto Item { get; set; }
 
         public NewItemPage()
         {

@@ -1,5 +1,4 @@
-﻿using EventMobileMvvm.Models;
-using EventMobileMvvm.ViewModels;
+﻿using EventMobileMvvm.ViewModels;
 using EventMobileMvvm.Views;
 using System;
 using System.Collections.Generic;
