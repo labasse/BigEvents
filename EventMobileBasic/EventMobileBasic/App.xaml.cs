@@ -27,7 +27,7 @@ namespace EventMobileBasic
                 new EventApiService("https://myevents-api.example.com", http)
 #endif
             );
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage());
         }
         
 

@@ -49,7 +49,9 @@ namespace EventMobileBasic
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            
+            var entry = (EventEntry)((Element)sender).BindingContext;
+
+            Navigation.PushAsync(new EventPage(entry));
         }
 
         private async void SwipeItem_Clicked(object sender, EventArgs e)
